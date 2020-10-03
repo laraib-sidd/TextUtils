@@ -1,4 +1,4 @@
-# I have CREATED THIS FILE
+
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -15,7 +15,7 @@ def analyse(request):
     newlineremover = request.POST.get('newlineremover','off')
     extraspaceremover = request.POST.get('extraspaceremover','off')
 
-    #check which checkbox is on
+    
     if removepunc=="on":
          punctuations= '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
          analysed=""
@@ -24,9 +24,7 @@ def analyse(request):
                 analysed= analysed+char
          params={'purpose':'Removed Punctuations','analysed_text': analysed}
          djtext=analysed
-    # analyse the text
-         #return render(request, 'analyse.html',params)
-
+   
 
     if(fullcaps=="on"):
         analysed =""
@@ -34,7 +32,7 @@ def analyse(request):
             analysed= analysed + char.upper()
         params = {'purpose': 'Changed to Uppercase', 'analysed_text': analysed}
         djtext=analysed
-        #return render(request, 'analyse.html', params)
+        
 
 
     if(newlineremover=="on"):
@@ -44,7 +42,7 @@ def analyse(request):
                 analysed = analysed + char
         params = {'purpose': 'Removed Newlines', 'analysed_text': analysed}
         djtext=analysed
-        #return render(request, 'analyse.html', params)
+
 
 
     if (extraspaceremover == "on"):
